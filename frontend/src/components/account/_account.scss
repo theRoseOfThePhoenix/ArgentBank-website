@@ -1,0 +1,25 @@
+.account {
+  width: 100%;
+  position: relative;
+  padding: $account-padding;
+  margin-bottom: $user-page-medium-spacing;
+  background-color: $white-color;
+
+  &_amount {
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  & .green-button {
+    position: absolute;
+    bottom: $account-padding;
+    right: $account-padding;
+    width: 200px;
+
+    @include phone-portrait {
+      position: static;
+      margin-top: 15px;
+      width: 100%;
+    }
+  }
+}
