@@ -1,6 +1,9 @@
 .account {
-  width: 100%;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: auto;
   padding: $account-padding;
   margin-bottom: $user-page-medium-spacing;
   background-color: $white-color;
@@ -11,7 +14,6 @@
   }
 
   & .green-button {
-    position: absolute;
     bottom: $account-padding;
     right: $account-padding;
     width: 200px;

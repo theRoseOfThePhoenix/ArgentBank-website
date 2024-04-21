@@ -1,14 +1,14 @@
 // @ts-nocheck
 import "./App.css";
 import Footer from "./components/footer/Footer";
-import Header from "./components/header/Heard";
-import Home from "./pages/homes/Home";
+import Header from "./components/header/Header";
+import Router from "./router";
 
 function App() {
   return (
     <div className="prout">
       <Header />
-      <Home />
+      <Router />
       <Footer />
     </div>
   );

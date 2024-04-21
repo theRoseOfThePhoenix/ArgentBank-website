@@ -4,7 +4,7 @@ function Hero({ img, alt, titles, text }) {
   return (
     <div className="hero">
       <img src={img} alt={alt} />
-      <div className="content-wrapper">
+      <div className="hero_content-wrapper">
         <div className="hero_content">
           {titles &&
             titles.map(

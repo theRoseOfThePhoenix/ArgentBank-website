@@ -3,8 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  & .logo {
+  &_logo {
     transform: scale(0.5);
     position: relative;
     left: -22%;
@@ -21,5 +20,11 @@
     }
 
     @include hover-opacity(0.8);
+  }
+  &_sign-in {
+    padding-right: 20px;
+    font-weight: bold;
+    color: $text-color-blue;
+    cursor: pointer;
   }
 }

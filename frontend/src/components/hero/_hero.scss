@@ -1,6 +1,5 @@
 .hero {
   position: relative;
-
   & img {
     height: 400px;
     width: 100%;
@@ -11,12 +10,10 @@
       height: 300px;
     }
   }
-
-  & .content-wrapper {
+  &_content-wrapper {
     position: absolute;
     top: 50px;
     right: 50px;
-
     @include phone-portrait {
       top: 0px;
       right: 0px;
@@ -27,7 +24,6 @@
       align-items: center;
     }
   }
-
   &_content {
     background-color: white;
     width: 364px;
@@ -39,12 +35,10 @@
       margin: 0 auto;
     }
   }
-
   &_subtitle {
     font-size: 24px;
     font-weight: 700;
   }
-
   &_text {
     font-size: 19px;
     margin-top: 25px;
