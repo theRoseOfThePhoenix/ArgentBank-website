@@ -8,14 +8,7 @@ import "./style/main.scss";
 
 // REDUX
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./reducers";
-
-const store = configureStore({
-  reducer: rootReducer,
-  //mettre false quand c'est en ligne pour eviter que les utilisateurs peuevnt aller sur le store
-  devTools: true,
-});
+import store from "./redux/store";
 
 // Assurez-vous que l'élément 'root' existe avant de continuer
 const rootElement = document.getElementById("root");

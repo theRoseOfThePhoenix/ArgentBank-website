@@ -1,5 +1,5 @@
 import React from "react";
-import UserName from "../../components/userName/UserName";
+import UserName from "../../components/useredit/UserEdit";
 import Account from "../../components/account/Account";
 
 function User() {
