@@ -41,11 +41,11 @@ function SignInForm() {
           sessionStorage.setItem("token", token);
         }
         navigate("/user");
-        dispatch(userLogin({ token }));
+        dispatch(userLogin({ token })); //envoie l'action userLogin au store qui contien le token //
       } else if (response.status === 400) {
         localStorage.removeItem("token");
         sessionStorage.removeItem("token");
-        setErrorMessage("Invalid username or password");
+        setErrorMessage("Invalid Email or Password");
       }
     } catch (error) {
       console.error("Erreur :", error);

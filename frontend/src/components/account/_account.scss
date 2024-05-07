@@ -2,11 +2,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid black;
+  background-color: #fff;
   width: 80%;
-  margin: auto;
-  padding: $account-padding;
-  margin-bottom: $user-page-medium-spacing;
-  background-color: $white-color;
+  margin: 0 auto;
+  flex-direction: column;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  text-align: left;
+  margin-bottom: 2rem;
+  gap: 10px;
+  &_btn button {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
 
   &_amount {
     font-size: 40px;
@@ -23,5 +32,10 @@
       margin-top: 15px;
       width: 100%;
     }
+  }
+}
+@media (min-width: 720px) {
+  .account {
+    flex-direction: row;
   }
 }

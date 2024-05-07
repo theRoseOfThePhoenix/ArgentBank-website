@@ -24,3 +24,5 @@ export const userLogout = () => {
     type: "LOGOUT",
   };
 };
+
+// les actions sont des objets qui contiennent un type d'action et un payload qui transporte les donnees pour executer cette action ver le reducer

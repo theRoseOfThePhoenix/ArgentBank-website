@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect } from "react";
 import GreenButton from "../greenbtn/GreenBtn";
 import { useDispatch, useSelector } from "react-redux";
@@ -80,9 +81,9 @@ const UserEdit = () => {
           </div>
         </>
       ) : (
-        <div>
+        <div className="edit-form ">
           <h1 className="welcome-user">
-            Welcome back {userProfile.userName} !
+            Welcome back <br></br> {userProfile.userName} !
           </h1>
           <GreenButton text="Edit Name" onClick={handleEditClick} />;
         </div>

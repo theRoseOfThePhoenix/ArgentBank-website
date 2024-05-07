@@ -3,22 +3,22 @@
 const initialState = {
   isLoggedIn: false, // Par défaut, l'utilisateur n'est pas connecté //
   user: null, // Initialement - aucun utilisateur n'est connecté //
-  token: null,
+  token: null, // Tout est vide ! //
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "USER_LOGIN":
+      return {
+        ...state, // Crée une copie de l'état existant de l'initial state //
+        isLoggedIn: true,
+        user: action.payload.user,
+        token: action.payload.token,
+      };
     case "SET_LOGGED_IN":
       return {
         ...state,
         isLoggedIn: true,
-      };
-    case "USER_LOGIN":
-      return {
-        ...state, // Crée une copie de l'état existant //
-        isLoggedIn: true,
-        user: action.payload.user,
-        token: action.payload.token,
       };
     case "LOGOUT":
       return {

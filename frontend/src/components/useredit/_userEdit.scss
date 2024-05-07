@@ -3,6 +3,9 @@
   flex-direction: column;
   align-items: center;
 }
+.buttons-form {
+  margin: 2rem;
+}
 
 .edit-button {
   border-color: #00bc77;
@@ -37,7 +40,12 @@ input {
 }
 
 .welcome-user {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   color: white;
   padding-top: 20px;
   margin: 0;
+  margin-bottom: 2rem;
 }

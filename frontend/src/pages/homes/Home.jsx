@@ -2,7 +2,7 @@
 import React from "react";
 import Hero from "../../components/hero/Hero";
 import Feature from "../../components/feature/Feature";
-import hero from "../../assets/img/bank-tree.jpeg";
+import hero from "../../assets/img/bank-tree.webp";
 
 import iconChat from "../../assets/img/icon-chat.png";
 import iconMoney from "../../assets/img/icon-money.png";
@@ -11,7 +11,7 @@ import iconSecurity from "../../assets/img/icon-security.png";
 function Home() {
   const heroImg = {
     name: "bank-tree",
-    alt: "jeune pouce qui prend racine dasn des pices de monnaie",
+    alt: "jeune pouce qui prend racine dans des pieces de monnaie",
   };
 
   const heroContent = {

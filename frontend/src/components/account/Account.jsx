@@ -9,7 +9,9 @@ function Account({ account }) {
         <p className="account_amount">${account.amount}</p>
         <p className="account_description">{account.description}</p>
       </div>
-      <GreenButton text="View transactions" onClick={undefined} />
+      <div className="account_btn">
+        <GreenButton text="View transactions" onClick={undefined} />
+      </div>
     </div>
   );
 }

@@ -28,24 +28,24 @@ function Header() {
   }, [dispatch]);
 
   return (
-    <header className="header">
+    <header className="nav">
       <Link to="/">
-        <img src={bankLogo} alt="Argent Bank Logo" className="header_logo" />
+        <img src={bankLogo} alt="Argent Bank Logo" className="nav_logo" />
       </Link>
-      <div className="header_">
+      <div className="navUser">
         {/* Affichage conditionnel des éléments du header si oui ou non le user est connecté */}
         {isLoggedIn ? (
           <>
-            <Link to="/user" className="header_sign-in">
+            <Link to="/user" className="navUser_sign">
               <i className="fa fa-user-circle"></i> {userProfile.userName}
             </Link>
-            <div className="header_sign-in" onClick={handleLogout}>
+            <div className="navUser_sign" onClick={handleLogout}>
               <i className="fa fa-sign-out"></i>
               Logout
             </div>
           </>
         ) : (
-          <Link to="/log" className="header_sign-in">
+          <Link to="/log" className="navUser_sign">
             <i className="fa fa-user-circle"></i> Sign in
           </Link>
         )}

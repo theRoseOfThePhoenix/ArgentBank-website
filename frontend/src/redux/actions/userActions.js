@@ -1,16 +1,14 @@
-// Importation de createSlice depuis redux-toolkit pour la création d'un slice du store
 import { createSlice } from "@reduxjs/toolkit";
 
-// État initial du slice de profil utilisateur, avec des champs pour le prénom et le nom
 const initialState = {
-  firstName: "", // Prénom de l'utilisateur, initialisé à une chaîne vide
-  lastName: "", // Nom de famille de l'utilisateur, initialisé à une chaîne vide
+  firstName: "",
+  lastName: "",
 };
 
 // Création du slice userProfile qui contient le nom, l'état initial et les reducers
 const userProfileSlice = createSlice({
   name: "userProfile", // Nom du slice, utilisé pour référencer ce morceau du store
-  initialState, // Définition de l'état initial
+  initialState,
   reducers: {
     // Reducer pour définir le profil utilisateur
     // Déstructuration de payload directement dans les paramètres pour accès direct aux champs firstName et lastName
