@@ -6,7 +6,7 @@ import Router from "./router";
 
 function App() {
   return (
-    <div className="prout">
+    <div className="">
       <Header />
       <Router />
       <Footer />

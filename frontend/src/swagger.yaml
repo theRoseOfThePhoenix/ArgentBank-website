@@ -2,8 +2,8 @@ swagger: "2.0"
 info:
   title: Bank Argent API documentation
   description: Contains all available API endpoints in this codebase
-  version: 1.0.0
-  termsOfService: http://swagger.io/terms/
+  version: "1.0.0"
+  termsOfService: "http://swagger.io/terms/"
 host: localhost:3001
 basePath: /api/v1
 schemes:
@@ -65,6 +65,8 @@ paths:
         - User Module
       summary: User Profile API
       description: API for fetching a user profile
+      #produces:
+      # - application/json
       responses:
         "200":
           description: User profile retrieved successfully
@@ -99,6 +101,8 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
+  # Début des endpoints qui concernent les transactions
+  # Récupérer toutes les transactions du mois en cours
   /transactions:
     get:
       security:
@@ -116,18 +120,19 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
+  # Récupérer les détails d'une transaction spécifique
   /transactions/{transactionId}:
     get:
-      summary: Get detail of one transaction
-      description: Show all informations about specific transaction.
       security:
         - Bearer: []
       tags:
         - Transactions Module
+      summary: Get transaction details
+      description: Retrieve details of a specific transaction by its unique ID
       parameters:
-        - name: transactionId
+        - in: path
+          name: transactionId
           description: Unique ID of transaction
-          in: path
           required: true
           type: string
       responses:
@@ -136,79 +141,74 @@ paths:
           schema:
             $ref: "#/definitions/TransactionApiResponse"
         "400":
-          description: Invalid data provided
-        "404":
-          description: Transaction not found
-
-  /transactions/entities/{entityId}:
+          description: Invalid Fields
+        "500":
+          description: Internal Server Error
+  # Ajouter une catégorie ou une note à une transaction
+  #hesitation entre post et put, à en discuter en interne avec les dev backend pour p
+  /transactions/{transactionId}/{item}:
     put:
-      summary: Update a category or note
-      description: Updates a specific category or note identified by its ID.
       security:
         - Bearer: []
       tags:
         - Transactions Module
+      summary: Add category or note to a transaction
+      description: Add a new category or note to a transaction
       parameters:
-        - name: entityId
+        - in: path
+          name: transactionId
           description: Unique ID of transaction
-          in: path
           required: true
           type: string
-        - name: entityType
+        - in: path
+          name: item
           description: Category or note
-          in: query
           required: true
           type: string
-          enum:
-            - note
-            - category
         - in: body
-          name: updateDetails
+          name: body
           description: New category and note information for the transaction
           required: true
           schema:
             $ref: "#/definitions/TransactionCategoryNote"
-            responses:
-              "200":
-                description: Entity updated successfully. The response will vary based on the entity type.
-                schema:
-                  type: object # Définir le type à 'object' pour encapsuler le 'oneOf'
-                  properties:
-                    response:
-                      oneOf:
-                        - $ref: "#/definitions/CategoryApiResponse"
-                        - $ref: "#/definitions/NoteApiResponse"
-      "400":
-        description: Invalid data provided
-      "404":
-        description: Entity not found
-
+      responses:
+        "200":
+          description: The request was successful, the category or note was added correctly
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        "400":
+          description: Invalid Fields
+        "500":
+          description: Internal Server Error
+  # Supprimer une note d'une transaction
+  /transactions/{transactionId}/notes/{noteId}:
     delete:
-      summary: Delete a category or note
-      description: Deletes a specific category or note identified by its ID.
       security:
         - Bearer: []
       tags:
         - Transactions Module
+      summary: Delete a note from a transaction
+      description: Delete a note associated with a specific transaction
       parameters:
-        - name: entityId
-          in: path
+        - in: path
+          name: transactionId
+          description: Unique ID of the transaction
           required: true
           type: string
-        - name: entityType
-          in: query
+        - in: path
+          name: noteId
+          description: Unique ID of the note to be deleted
           required: true
           type: string
-          enum:
-            - note
-            - category
       responses:
-        "204":
-          description: Entity successfully deleted
-        "404":
-          description: Entity not found
-        "403":
-          description: Deletion forbidden due to integrity constraints
+        "200":
+          description: Note deleted successfully
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        "400":
+          description: Invalid Fields or Note cannot be deleted
+        "500":
+          description: Internal Server Error
 
 securityDefinitions:
   Bearer:
@@ -255,8 +255,6 @@ definitions:
             type: string
           email:
             type: string
-
-        #réponse de l'API contenant le token lors de la connexion
   LoginResponse:
     type: object
     properties:
@@ -267,8 +265,7 @@ definitions:
     properties:
       userName:
         type: string
-
-      # tableau qui contient la liste de toute les transactions
+  # Définition de la réponse pour la liste des transactions
   TransactionsResponse:
     type: object
     properties:
@@ -276,7 +273,7 @@ definitions:
         type: array
         items:
           $ref: "#/definitions/TransactionApiResponse"
-      # structure de la réponse de l'API pour 1 transaction
+  # Réponse de l'API pour une transaction individuelle
   TransactionApiResponse:
     type: object
     properties:
@@ -301,8 +298,7 @@ definitions:
       category:
         type: string
         description: Category of the transaction
-
-        # structure de l'objet pour la modification des notes et des categorys
+  # Structure des catégories et des notes associées à une transaction
   TransactionCategoryNote:
     type: object
     properties:
@@ -310,6 +306,7 @@ definitions:
         type: string
       note:
         type: string
+  # Réponse de l'API pour une catégorie
   CategoryApiResponse:
     type: object
     properties:
@@ -317,6 +314,7 @@ definitions:
         type: integer
       message:
         type: string
+  # Réponse de l'API pour une note
   NoteApiResponse:
     type: object
     properties:
