@@ -11,7 +11,7 @@ const initialState = {
     lastName: "",
     userName: "",
   },
-  error: null, // Ajout d'une clé pour stocker les erreurs //
+  // Ajout d'une clé pour stocker les erreurs //
 };
 
 const profileReducer = (state = initialState, action) => {

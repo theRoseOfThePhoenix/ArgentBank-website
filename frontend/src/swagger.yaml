@@ -210,6 +210,36 @@ paths:
         "500":
           description: Internal Server Error
 
+    # Supprimer une category d'une transaction
+  /transactions/{transactionId}/category/{categoryId}:
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: Delete a category from a transaction
+      description: Deletes a category associated with a specific transaction.
+      parameters:
+        - in: path
+          name: transactionId
+          required: true
+          type: string
+          description: Unique identifier of the transaction
+        - in: path
+          name: categoryId
+          required: true
+          type: string
+          description: Unique identifier of the category to be deleted
+      responses:
+        200:
+          description: Category deleted successfully
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        404:
+          description: Category not found
+        500:
+          description: Internal server error
+
 securityDefinitions:
   Bearer:
     type: apiKey
